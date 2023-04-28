@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cwsdco10v1ukn"]
+
+[ext_resource type="Texture2D" uid="uid://b7jpuab50o3y5" path="res://sprites/PortalOrange.png" id="1_f3nwl"]
+
+[resource]
+albedo_texture = ExtResource("1_f3nwl")
+rim_enabled = true
+rim_tint = 0.0

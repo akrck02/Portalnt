@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://11310uedgh0g"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_py30g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r5fqo"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_py30g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.75711, 0.65326, 0.00592865, -0.631725, 0.729779, 0.261431, 0.166456, -0.201677, 0.965204, -0.0448619, 0.732499, 1.31854)
+visible = false
+light_energy = 0.695
+light_indirect_energy = 8.314
+light_angular_distance = 0.65
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504266, 0)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_r5fqo")

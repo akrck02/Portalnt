@@ -1,0 +1,79 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0kfu7i27jnwc"]
+
+[ext_resource type="Script" path="res://scripts/portal.gd" id="1_fxeqt"]
+[ext_resource type="Material" uid="uid://cwsdco10v1ukn" path="res://materials/portal_orange.tres" id="2_47blr"]
+[ext_resource type="Material" uid="uid://djvywild0q5pc" path="res://materials/walls.tres" id="3_hhfcq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf78f"]
+size = Vector3(1.38016, 2.02394, 0.0889664)
+
+[sub_resource type="Animation" id="Animation_r3xxq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape:transparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5lixn"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shape:transparency")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_10oud"]
+_data = {
+"RESET": SubResource("Animation_r3xxq"),
+"idle": SubResource("Animation_5lixn")
+}
+
+[node name="Portal" type="Node3D"]
+script = ExtResource("1_fxeqt")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00371206, 0.117807, -0.00402714)
+shape = SubResource("BoxShape3D_mf78f")
+
+[node name="Shape" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.963956, 0, 0, 0, 0.000649979, -1.40172, 0, 0.0231827, 0.0393004, 0, 0.124157, 0)
+material_overlay = ExtResource("2_47blr")
+radius = 0.726
+sides = 64
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0140494, 0.0868613, -0.0166607)
+
+[node name="Display" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.927902, 0, 0, 0, 0.000729328, -1.31392, 0, 0.0260128, 0.0368388, 0, 0.124157, 0)
+material_override = ExtResource("3_hhfcq")
+cast_shadow = 0
+radius = 0.726
+sides = 64
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_10oud")
+}
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

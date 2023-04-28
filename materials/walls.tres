@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://djvywild0q5pc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5wtt"]
+
+[resource]
+next_pass = SubResource("StandardMaterial3D_j5wtt")
+emission_enabled = true
+emission = Color(0.635294, 0.635294, 0.635294, 1)

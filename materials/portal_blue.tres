@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://baiico2q5my8p"]
+
+[ext_resource type="Texture2D" uid="uid://dml2tb4on3482" path="res://sprites/PortalBlue.png" id="1_oepus"]
+
+[resource]
+albedo_texture = ExtResource("1_oepus")
+emission = Color(1, 1, 1, 1)
+rim_enabled = true
+rim_tint = 1.0
+anisotropy = -0.93
